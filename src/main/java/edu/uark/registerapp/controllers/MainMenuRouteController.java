@@ -13,8 +13,8 @@ import edu.uark.registerapp.models.api.Product;
 
 //Current Home Page
 @Controller
-@RequestMapping(value = "/")
-public class ProductListingRouteController {
+@RequestMapping(value = "/menu")
+public class MainMenuRouteController{
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView showProductListing() {
 		ModelAndView modelAndView =
