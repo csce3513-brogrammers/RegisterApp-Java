@@ -11,7 +11,6 @@ import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.models.api.Product;
 
-//Current Home Page
 @Controller
 @RequestMapping(value = "/")
 public class ProductListingRouteController {
