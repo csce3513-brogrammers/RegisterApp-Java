@@ -27,6 +27,7 @@ public class MainMenuRouteController extends BaseRouteController {
 		final Optional<ActiveUserEntity> activeUserEntity =
 			this.getCurrentUser(request);
 		if (!activeUserEntity.isPresent()) {
+			//No active user, Change to route to sign-in page
 			return this.buildInvalidSessionResponse();
 		}
 		
