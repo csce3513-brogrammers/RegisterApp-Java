@@ -24,7 +24,6 @@ public class MainMenuRouteController extends BaseRouteController {
 		final HttpServletRequest request //Handles current active session/user
 	) {
 
-<<<<<<< HEAD
 		// final Optional<ActiveUserEntity> activeUserEntity =
 		// 	this.getCurrentUser(request);
 		// if (!activeUserEntity.isPresent()) {
@@ -32,17 +31,6 @@ public class MainMenuRouteController extends BaseRouteController {
 		// 	return this.buildInvalidSessionResponse();
 		// }
 		
-=======
-/*
-		final Optional<ActiveUserEntity> activeUserEntity =
-			this.getCurrentUser(request);
-		if (!activeUserEntity.isPresent()) {
-			//No active user, route to sign-in page
-			return this.buildInvalidSessionResponse();
-		} 
-*/	
-	
->>>>>>> 5f46d7210e6f1e2e839d8e9d537ae3a8a0f1337f
 		ModelAndView modelAndView =
 			this.setErrorMessageFromQueryString(
 				new ModelAndView(ViewNames.MAIN_MENU.getViewName()),
