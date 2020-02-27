@@ -8,11 +8,11 @@ function validateForm() {
 	var y = document.forms['signInForm'].password.value;
 	    if (x == "" || y == ""){
             if (x == "" && y == ""){
-                text = "The username field must not be empty. The password field must not be empty.";
+                text = "The Employee ID field must not be empty. The password field must not be empty.";
                 document.getElementById("validation").innerHTML = text;
             }
             else if (x == ""){
-                text = "The username field must not be empty. "
+                text = "The Employee field must not be empty. "
                 document.getElementById("validation").innerHTML = text;
             }
             else if (y == ""){
