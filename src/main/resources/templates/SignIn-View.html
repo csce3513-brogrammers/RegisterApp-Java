@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title> Sign in - View </title>
+        <meta name="SignIn" content="width=device-width, initial-scale=1" />
+    </head>
+    <script>
+	    function validateForm(){
+		    var x = document.forms['nameForm'].firstName.value;
+		    var y = document.forms['nameForm'].lastName.value;
+	    if (x == "" || y == ""){
+            if (x == "" && y == ""){
+                text = "The first name filed must not be empty. The last name field must not be empty.";
+                document.getElementById("validation").innerHTML = text;
+            }
+            else if (x == ""){
+                text = "The first name filed must not be empty. "
+                document.getElementById("validation").innerHTML = text;
+            }
+            else if (y == ""){
+                text = "The last name filed must not be empty. ";
+                document.getElementById("validation").innerHTML = text;
+            }
+            document.getElementById("validation").style.visibility = "visible";
+            return false;
+        }
+        }		
+    </script>
+    <body>
+        <div class="Sign-In">
+            <h1 class="primary-message">Sign-In</h1>
+        </div>
+        <form id="signInForm" onsubmit="return validateForm()" method="POST">
+            Employee ID: <input type='text' name='employee' value='Employee ID'></br>
+            Password: <input type='text' name='password' value='Password'></br>
+            <input type='submit' value='Sign In'></br>
+        </form>
+        <p id="validation"></p>
+    </body>
+    <hmtl>
