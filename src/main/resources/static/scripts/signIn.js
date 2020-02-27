@@ -22,5 +22,11 @@ function validateForm() {
             document.getElementById("validation").style.visibility = "visible";
             return false;
         }
+
+        else if (isNaN(x)) {
+            text = "The Employee filed must be a number.";
+            doucument.getElementById("validation").style.visibility = "visible";
+            return false;
+        }
 	return true;
 }
