@@ -21,16 +21,18 @@ public class MainMenuRouteController extends BaseRouteController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView start(
 		@RequestParam final Map<String, String> queryParameters,
-		final HttpServletRequest request
+		final HttpServletRequest request //Handles current active session/user
 	) {
 
+/*
 		final Optional<ActiveUserEntity> activeUserEntity =
 			this.getCurrentUser(request);
 		if (!activeUserEntity.isPresent()) {
-			//No active user, Change to route to sign-in page
+			//No active user, route to sign-in page
 			return this.buildInvalidSessionResponse();
-		}
-		
+		} 
+*/	
+	
 		ModelAndView modelAndView =
 			this.setErrorMessageFromQueryString(
 				new ModelAndView(ViewNames.MAIN_MENU.getViewName()),
