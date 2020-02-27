@@ -74,6 +74,7 @@ public abstract class BaseRouteController extends BaseController {
 						QueryParameterMessages.SESSION_NOT_ACTIVE.getKeyAsString()))));
 	}
 
+	//Checks to see if user is elevated or not
 	protected boolean isElevatedUser(final ActiveUserEntity activeUserEntity) {
 		return EmployeeClassification.isElevatedUser(
 			activeUserEntity.getClassification());
