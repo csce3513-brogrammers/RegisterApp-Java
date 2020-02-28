@@ -24,11 +24,11 @@ public class ProductListingRouteController extends BaseRouteController {
 		ModelAndView modelAndView =
 			new ModelAndView(ViewNames.PRODUCT_LISTING.getViewName());
 
-		final Optional<ActiveUserEntity> activeUserEntity =
-			this.getCurrentUser(request);
-		modelAndView.addObject(
-			ViewModelNames.IS_ELEVATED_USER.getValue(),
-			this.isElevatedUser(activeUserEntity.get()));
+		// final Optional<ActiveUserEntity> activeUserEntity =
+		// 	this.getCurrentUser(request);
+		// modelAndView.addObject(
+		// 	ViewModelNames.IS_ELEVATED_USER.getValue(),
+		// 	this.isElevatedUser(activeUserEntity.get()));
 
 		try {
 			modelAndView.addObject(
