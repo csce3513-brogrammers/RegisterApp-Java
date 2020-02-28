@@ -26,9 +26,9 @@ public class ProductListingRouteController extends BaseRouteController {
 
 		// final Optional<ActiveUserEntity> activeUserEntity =
 		// 	this.getCurrentUser(request);
-		// modelAndView.addObject(
-		// 	ViewModelNames.IS_ELEVATED_USER.getValue(),
-		// 	this.isElevatedUser(activeUserEntity.get()));
+		modelAndView.addObject(
+			ViewModelNames.IS_ELEVATED_USER.getValue(),
+			false);
 
 		try {
 			modelAndView.addObject(
