@@ -31,7 +31,7 @@ public class MainMenuRouteController extends BaseRouteController {
 			//return this.buildInvalidSessionResponse();
 		}
 
-		
+
 		ModelAndView modelAndView =
 			this.setErrorMessageFromQueryString(
 				new ModelAndView(ViewNames.MAIN_MENU.getViewName()),
@@ -40,7 +40,8 @@ public class MainMenuRouteController extends BaseRouteController {
 		// TODO: Examine the ActiveUser classification if you want this information
 			modelAndView.addObject(
 				ViewModelNames.IS_ELEVATED_USER.getValue(),
-				this.isElevatedUser(activeUserEntity.get()));
+				true);
+				//this.isElevatedUser(activeUserEntity.get())
 		
 		return modelAndView;
 	}
