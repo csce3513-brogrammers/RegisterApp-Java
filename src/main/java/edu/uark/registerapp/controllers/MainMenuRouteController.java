@@ -31,8 +31,6 @@ public class MainMenuRouteController extends BaseRouteController {
 			//return this.buildInvalidSessionResponse();
 		}
 
-		this.isElevatedUser(activeUserEntity);
-		
 		
 		ModelAndView modelAndView =
 			this.setErrorMessageFromQueryString(
