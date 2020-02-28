@@ -30,6 +30,9 @@ public class MainMenuRouteController extends BaseRouteController {
 			//No active user, Change to route to sign-in page
 			//return this.buildInvalidSessionResponse();
 		}
+
+		this.isElevatedUser(activeUserEntity);
+		
 		
 		ModelAndView modelAndView =
 			this.setErrorMessageFromQueryString(
