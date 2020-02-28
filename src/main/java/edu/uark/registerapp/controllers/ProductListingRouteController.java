@@ -19,16 +19,14 @@ import edu.uark.registerapp.models.entities.ActiveUserEntity;
 @RequestMapping(value = "/productListing")
 public class ProductListingRouteController extends BaseRouteController {
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView showProductListing(final HttpServletRequest request) {
+	public ModelAndView showProductListing() {
 
 		ModelAndView modelAndView =
 			new ModelAndView(ViewNames.PRODUCT_LISTING.getViewName());
 
-		// final Optional<ActiveUserEntity> activeUserEntity =
-		// 	this.getCurrentUser(request);
-		// modelAndView.addObject(
-		// 	ViewModelNames.IS_ELEVATED_USER.getValue(),
-		// 	this.isElevatedUser(activeUserEntity.get()));
+		modelAndView.addObject(
+			ViewModelNames.IS_ELEVATED_USER.getValue(),
+			false);
 
 		try {
 			modelAndView.addObject(
