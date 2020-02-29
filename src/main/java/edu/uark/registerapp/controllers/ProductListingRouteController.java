@@ -19,12 +19,18 @@ import edu.uark.registerapp.models.entities.ActiveUserEntity;
 @RequestMapping(value = "/productListing")
 public class ProductListingRouteController extends BaseRouteController {
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView showProductListing() {
+	public ModelAndView showProductListing(
+		final HttpServletRequest request ){
 
 		ModelAndView modelAndView =
 			new ModelAndView(ViewNames.PRODUCT_LISTING.getViewName());
 
-		//ActiveUserEntity activeUser = this.getCurrentUser(request);
+		final Optional<ActiveUserEntity> activeUserEntity =
+			this.getCurrentUser(request);
+		if (!activeUserEntity.isPresent()) {
+			//No active user, Change to route to sign-in page
+			//return this.buildNoPermissionsResponse("/productListing");
+		}
 		
 		modelAndView.addObject(
 			"isElevatedUser",

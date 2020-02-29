@@ -28,7 +28,7 @@ public class MainMenuRouteController extends BaseRouteController {
 			this.getCurrentUser(request);
 		if (!activeUserEntity.isPresent()) {
 			//No active user, Change to route to sign-in page
-			return this.buildNoPermissionsResponse("/productListing");
+			//return this.buildNoPermissionsResponse("/productListing");
 		}
 
 
