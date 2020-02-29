@@ -23,8 +23,11 @@
 
 		<div class="productsWrapper">
 			<div>
-				<!-- add check for elevated user -->
-				<a href="/productDetail/" class="button">Create New</a>
+				<div id="createActionContainer" th:class="${product.isElevated} ? hidden : ''">
+					<button id="deleteButton" type="button" class="action">Create New</button>
+					<br />
+					<br />
+				</div>
 			</div>
 
 			<br /><br />
