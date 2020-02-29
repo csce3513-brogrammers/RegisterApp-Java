@@ -28,7 +28,7 @@ public class MainMenuRouteController extends BaseRouteController {
 			this.getCurrentUser(request);
 		if (!activeUserEntity.isPresent()) {
 			//No active user, Change to route to sign-in page
-			//return this.buildInvalidSessionResponse();
+			return this.buildNoPermissionsResponse("/productListing");
 		}
 
 
@@ -39,7 +39,7 @@ public class MainMenuRouteController extends BaseRouteController {
 
 		// TODO: Examine the ActiveUser classification if you want this information
 			modelAndView.addObject(
-				ViewModelNames.IS_ELEVATED_USER.getValue(),
+				"isElevatedUser",
 				false);
 				//this.isElevatedUser(activeUserEntity.get())
 		
