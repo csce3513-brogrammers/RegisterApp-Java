@@ -23,19 +23,12 @@ import edu.uark.registerapp.models.entities.ActiveUserEntity;
 @RequestMapping(value = "/productDetail")
 public class ProductDetailRouteController extends BaseRouteController {
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView start() {
-		return (new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName()))
+	public ModelAndView start(final HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName())
 			.addObject(
 				ViewModelNames.PRODUCT.getValue(),
 				(new Product()).setLookupCode(StringUtils.EMPTY).setCount(0));
-	}
-
-	@RequestMapping(value = "/{productId}", method = RequestMethod.GET)
-	public ModelAndView startWithProduct(@PathVariable final UUID productId,
-										final HttpServletRequest request) {
-		final ModelAndView modelAndView =
-			new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName());
-		
+				
 		final Optional<ActiveUserEntity> activeUserEntity =
 			this.getCurrentUser(request);
 		if (!activeUserEntity.isPresent()) {
@@ -43,11 +36,19 @@ public class ProductDetailRouteController extends BaseRouteController {
 			//this.buildInvalidSessionResponse();
 			//return this.buildNoPermissionsResponse("/signIn");
 		}
-
+	
 		modelAndView.addObject(
 			"isElevatedUser",
 			false);
 			//this.isElevatedUser(activeUserEntity.get())
+
+		return modelAndView;		
+	}
+
+	@RequestMapping(value = "/{productId}", method = RequestMethod.GET)
+	public ModelAndView startWithProduct(@PathVariable final UUID productId) {
+		final ModelAndView modelAndView =
+			new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName());
 
 		try {
 			modelAndView.addObject(
