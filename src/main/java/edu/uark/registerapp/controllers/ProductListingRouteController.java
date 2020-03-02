@@ -35,6 +35,7 @@ public class ProductListingRouteController extends BaseRouteController {
 		modelAndView.addObject(
 			"isElevatedUser",
 			false);
+			//this.isElevatedUser(activeUserEntity.get())
 
 		try {
 			modelAndView.addObject(

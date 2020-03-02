@@ -23,7 +23,7 @@
 
 		<div class="productsWrapper">
 			<div>
-				<div id="createActionContainer" class=hidden>
+				<div id="createActionContainer" th:class="${!isElevatedUser} ? hidden : ''">
 					<button id="createButton" type="button" class="action">Create New</button>
 					<br />
 					<br />
