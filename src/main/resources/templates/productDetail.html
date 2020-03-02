@@ -47,23 +47,25 @@
 			</table>
 		</div>
 
-		<div class="productActionsWrapper">
-			<br />
-			<div id="deleteActionContainer" th:class="${product.isEmpty} ? hidden : ''">
-				<button id="deleteButton" type="button" class="action">Delete</button>
+		<div id="elevatedActionWrapper" th:class="${!isElevatedUser} ? hidden : ''"> 
+			<div class="productActionsWrapper" th:class>
 				<br />
-				<br />
+				<div id="deleteActionContainer" th:class="${product.isEmpty} ? hidden : ''">
+					<button id="deleteButton" type="button" class="action">Delete</button>
+					<br />
+					<br />
+				</div>
+				<button id="saveButton" type="button" class="action">Save</button>
 			</div>
-			<button id="saveButton" type="button" class="action">Save</button>
-		</div>
 
-		<div id="productSavedAlertModal" class="modal animate-opacity-show">
-			<div class="modal-content">
-				<div class="container gray-blue">
-					<h1>
-						<span>Product</span><br />
-						<span>Saved</span>
-					</h1>
+			<div id="productSavedAlertModal" class="modal animate-opacity-show">
+				<div class="modal-content">
+					<div class="container gray-blue">
+						<h1>
+							<span>Product</span><br />
+							<span>Saved</span>
+						</h1>
+					</div>
 				</div>
 			</div>
 		</div>
