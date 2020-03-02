@@ -37,7 +37,7 @@ public class ProductRestController extends BaseRestController {
 				response,
 				ViewNames.PRODUCT_LISTING.getRoute());
 
-		if (!elevatedUserResponse.getRedirectUrl().equals(StringUtils.EMPTY) {
+		if (!elevatedUserResponse.getRedirectUrl().equals(StringUtils.EMPTY)) {
 			return elevatedUserResponse;
 		}
 
@@ -61,7 +61,7 @@ public class ProductRestController extends BaseRestController {
 			response,
 			ViewNames.PRODUCT_LISTING.getRoute());
 
-		if (!elevatedUserResponse.getRedirectUrl().equals(StringUtils.EMPTY) {
+		if (!elevatedUserResponse.getRedirectUrl().equals(StringUtils.EMPTY)) {
 			return this.productUpdateCommand
 			.setProductId(productId)
 			.setApiProduct(product)
@@ -84,7 +84,7 @@ public class ProductRestController extends BaseRestController {
 			response,
 			ViewNames.PRODUCT_LISTING.getRoute());
 
-		if (!elevatedUserResponse.getRedirectUrl().equals(StringUtils.EMPTY) {
+		if (!elevatedUserResponse.getRedirectUrl().equals(StringUtils.EMPTY)) {
 			this.productDeleteCommand
 			.setProductId(productId)
 			.execute();
