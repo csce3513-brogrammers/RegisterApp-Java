@@ -28,8 +28,12 @@ public class MainMenuRouteController extends BaseRouteController {
 			this.getCurrentUser(request);
 		if (!activeUserEntity.isPresent()) {
 			//No active user, Change to route to sign-in page
+<<<<<<< HEAD
 			//this.buildInvalidSessionResponse();
 			//return this.buildNoPermissionsResponse("/signIn");
+=======
+			//return this.buildNoPermissionsResponse("/productListing");
+>>>>>>> parent of 2078ed9... Elevation Checks
 		}
 
 
