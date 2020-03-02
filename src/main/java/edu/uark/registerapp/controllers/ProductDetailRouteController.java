@@ -1,6 +1,9 @@
 package edu.uark.registerapp.controllers;
 
+import java.util.Optional;
 import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +17,11 @@ import edu.uark.registerapp.commands.products.ProductQuery;
 import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.models.api.Product;
+import edu.uark.registerapp.models.entities.ActiveUserEntity;
 
 @Controller
 @RequestMapping(value = "/productDetail")
-public class ProductDetailRouteController {
+public class ProductDetailRouteController extends BaseRouteController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView start() {
 		return (new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName()))
@@ -27,9 +31,23 @@ public class ProductDetailRouteController {
 	}
 
 	@RequestMapping(value = "/{productId}", method = RequestMethod.GET)
-	public ModelAndView startWithProduct(@PathVariable final UUID productId) {
+	public ModelAndView startWithProduct(@PathVariable final UUID productId,
+										final HttpServletRequest request) {
 		final ModelAndView modelAndView =
 			new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName());
+		
+		final Optional<ActiveUserEntity> activeUserEntity =
+			this.getCurrentUser(request);
+		if (!activeUserEntity.isPresent()) {
+			//No active user, Change to route to sign-in page
+			//this.buildInvalidSessionResponse();
+			//return this.buildNoPermissionsResponse("/signIn");
+		}
+
+		modelAndView.addObject(
+			"isElevatedUser",
+			true);
+			//this.isElevatedUser(activeUserEntity.get())
 
 		try {
 			modelAndView.addObject(

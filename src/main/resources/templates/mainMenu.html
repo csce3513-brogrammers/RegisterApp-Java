@@ -21,16 +21,16 @@
 			<h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
 		</div>
 
-		<!-- TODO: Add the various action button elements -->
+
 		<div>
 			<div id="mainMenuButtonContainer"> <!--class="action"-->
 				<a href="javascript:displayError('Functionality has not been implemented yet')" id="startTxn" class="button">Start Transaction</a>
 				<br>
 				<br>
-				<button id="prodList" type="button" class="action">Product List</button>
+				<button id="prodList" type="button" class="action">Product List</button> <!-- TODO: redirect to "/productListing" -->
 				<br>
 				<br>
-				<a id="elevatedUserContainer" th:class="${!isElevatedUser} ? hidden : ''">
+				<div id="elevatedUserContainer" th:class="${!isElevatedUser} ? hidden : ''">
 					<a href="javascript:displayError('Functionality has not been implemented yet')" id="empCreate" class="button">Create Employee</a>
 					<br>
 					<br>
@@ -38,7 +38,7 @@
 					<br>
 					<br>
 					<a href="javascript:displayError('Functionality has not been implemented yet')" id="cashReport" class="button">Cashier Report</a>
-				</a>
+				</div>
 				<br>
 				<br>
 			</div>
