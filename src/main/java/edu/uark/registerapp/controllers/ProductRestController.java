@@ -67,6 +67,8 @@ public class ProductRestController extends BaseRestController {
 		// 	.setApiProduct(product)
 		// 	.execute();
 		// }
+		
+		return new ApiResponse();
 
 	}
 
