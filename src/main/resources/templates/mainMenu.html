@@ -4,10 +4,10 @@
 	<title>Register - Main Menu</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
-	<link rel="stylesheet" type="text/css" href="/styles/master.css">
+	<link rel="stylesheet" type="text/css" href="../static/styles/master.css">
 
-	<script type="text/javascript" src="/scripts/master.js" defer></script>
-	<script type="text/javascript" src="/scripts/mainMenu.js" defer></script>
+	<script type="text/javascript" src="../static/scripts/master.js" defer></script>
+	<script type="text/javascript" src="../static/scripts/mainMenu.js" defer></script>
 </head>
 
 <body>
@@ -24,20 +24,20 @@
 
 		<div>
 			<div id="mainMenuButtonContainer"> <!--class="action"-->
-				<a href="javascript:displayError('Functionality has not been implemented yet')" id="startTxn" class="button">Start Transaction</a>
+				<button type="button" id="startTxn" class="action">Start Transaction</button>
 				<br>
 				<br>
 				<button id="prodList" type="button" class="action">Product List</button> <!-- TODO: redirect to "/productListing" -->
 				<br>
 				<br>
 				<div id="elevatedUserContainer" th:class="${!isElevatedUser} ? hidden : ''">
-					<a href="javascript:displayError('Functionality has not been implemented yet')" id="empCreate" class="button">Create Employee</a>
+					<button type="button" id="empCreate" class="action">Create Employee</button>
 					<br>
 					<br>
-					<a href="javascript:displayError('Functionality has not been implemented yet')" id="empDetails" class="button">Employee Details</a>
+					<button type="button" id="empDetails" class="action">Employee Details</button>
 					<br>
 					<br>
-					<a href="javascript:displayError('Functionality has not been implemented yet')" id="cashReport" class="button">Cashier Report</a>
+					<button type="button" id="cashReport" class="action">Cashier Report</button>
 				</div>
 				<br>
 				<br>
