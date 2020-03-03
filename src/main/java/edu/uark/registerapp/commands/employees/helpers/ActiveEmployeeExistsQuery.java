@@ -16,7 +16,7 @@ public class ActiveEmployeeExistsQuery {
 
         if (employee.existsByIsActive(false)) {
 
-            NotFoundException exception = new NotFoundException("Employee");
+            throw new NotFoundException("Employee");
         }
     }
 }
