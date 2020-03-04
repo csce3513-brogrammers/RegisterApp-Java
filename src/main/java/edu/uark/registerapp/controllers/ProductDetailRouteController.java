@@ -34,7 +34,7 @@ public class ProductDetailRouteController extends BaseRouteController {
 		if (!activeUserEntity.isPresent()) {
 			//No active user, Change to route to sign-in page
 			//this.buildInvalidSessionResponse();
-			//return this.buildNoPermissionsResponse("/signIn");
+			//return this.buildNoPermissionsResponse("/productListing");
 		}
 	
 		modelAndView.addObject(
@@ -51,12 +51,13 @@ public class ProductDetailRouteController extends BaseRouteController {
 		final ModelAndView modelAndView =
 			new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName());
 
+		//Set user elevation
 		final Optional<ActiveUserEntity> activeUserEntity =
 			this.getCurrentUser(request);
 		if (!activeUserEntity.isPresent()) {
 			//No active user, Change to route to sign-in page
 			//this.buildInvalidSessionResponse();
-			//return this.buildNoPermissionsResponse("/signIn");
+			//return this.buildNoPermissionsResponse("/productListing");
 		}
 	
 		modelAndView.addObject(
