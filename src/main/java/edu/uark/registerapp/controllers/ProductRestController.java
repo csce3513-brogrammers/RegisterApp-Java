@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.apache.commons.lang3.StringUtils;
 import edu.uark.registerapp.commands.products.ProductCreateCommand;
 import edu.uark.registerapp.commands.products.ProductDeleteCommand;
 import edu.uark.registerapp.commands.products.ProductUpdateCommand;
@@ -48,11 +49,24 @@ public class ProductRestController extends BaseRestController {
 	@RequestMapping(value = "/{productId}", method = RequestMethod.PUT)
 	public @ResponseBody ApiResponse updateProduct(
 		@PathVariable final UUID productId,
-		@RequestBody final Product product
+		@RequestBody final Product product,
+		final HttpServletRequest request,
+		final HttpServletResponse response
 	) {
 
-		// TODO: Verify that the user associated with the current session is elevated
+		//If the user is not elevated, the .getRoute() will have a value other than EMPTY
+		final ApiResponse elevatedUserResponse =
+			this.redirectUserNotElevated(
+			request,
+			response,
+			ViewNames.PRODUCT_LISTING.getRoute());
 
+		//If the user is not elevated, it will be !false, which turns true and then redirects the user. 
+		if (!elevatedUserResponse.getRedirectUrl().equals(StringUtils.EMPTY)) {
+			return elevatedUserResponse;
+		}
+
+		//Creates product
 		return this.productUpdateCommand
 			.setProductId(productId)
 			.setApiProduct(product)
@@ -61,10 +75,20 @@ public class ProductRestController extends BaseRestController {
 
 	@RequestMapping(value = "/{productId}", method = RequestMethod.DELETE)
 	public @ResponseBody ApiResponse deleteProduct(
-		@PathVariable final UUID productId
+		@PathVariable final UUID productId,
+		final HttpServletRequest request,
+		final HttpServletResponse response
 	) {
 
-		// TODO: Verify that the user associated with the current session is elevated
+		final ApiResponse elevatedUserResponse =
+			this.redirectUserNotElevated(
+			request,
+			response,
+			ViewNames.PRODUCT_LISTING.getRoute());
+
+		if (!elevatedUserResponse.getRedirectUrl().equals(StringUtils.EMPTY)) {
+			return elevatedUserResponse;
+		}
 
 		this.productDeleteCommand
 			.setProductId(productId)
