@@ -25,6 +25,7 @@ public class ProductListingRouteController extends BaseRouteController {
 		ModelAndView modelAndView =
 			new ModelAndView(ViewNames.PRODUCT_LISTING.getViewName());
 
+		//Set user elevation
 		final Optional<ActiveUserEntity> activeUserEntity =
 			this.getCurrentUser(request);
 		if (!activeUserEntity.isPresent()) {

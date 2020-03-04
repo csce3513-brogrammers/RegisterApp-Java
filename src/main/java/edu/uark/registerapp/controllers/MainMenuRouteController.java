@@ -24,6 +24,7 @@ public class MainMenuRouteController extends BaseRouteController {
 		final HttpServletRequest request //Handles current active session/user
 	) {
 
+		//Set user elevation
 		final Optional<ActiveUserEntity> activeUserEntity =
 			this.getCurrentUser(request);
 		if (!activeUserEntity.isPresent()) {
@@ -31,7 +32,6 @@ public class MainMenuRouteController extends BaseRouteController {
 			//this.buildInvalidSessionResponse();
 			//return this.buildNoPermissionsResponse("/signIn");
 		}
-
 
 		ModelAndView modelAndView =
 			this.setErrorMessageFromQueryString(
