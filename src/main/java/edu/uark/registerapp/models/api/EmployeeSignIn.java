@@ -2,10 +2,10 @@ package edu.uark.registerapp.models.api;
 
 public class EmployeeSignIn {
 
-    public String employeeId;
-    public String password;
+    private String employeeId;
+    private String password;
 
-    public EmployeeSignIn(final String Id, final String pass) {
+    public EmployeeSignIn(String Id, String pass) {
 
         this.employeeId = Id;
         this.password = pass;
@@ -21,12 +21,12 @@ public class EmployeeSignIn {
         return password;
     }
 
-    public void setEmployeeId(final String Id) {
+    public void setEmployeeId(String Id) {
 
         this.employeeId = Id;
     }
 
-    public void setPassword(final String pass) {
+    public void setPassword(String pass) {
 
         this.password = pass;
     }
