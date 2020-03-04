@@ -46,9 +46,23 @@ public class ProductDetailRouteController extends BaseRouteController {
 	}
 
 	@RequestMapping(value = "/{productId}", method = RequestMethod.GET)
-	public ModelAndView startWithProduct(@PathVariable final UUID productId) {
+	public ModelAndView startWithProduct(@PathVariable final UUID productId, 
+											final HttpServletRequest request) {
 		final ModelAndView modelAndView =
 			new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName());
+
+		final Optional<ActiveUserEntity> activeUserEntity =
+			this.getCurrentUser(request);
+		if (!activeUserEntity.isPresent()) {
+			//No active user, Change to route to sign-in page
+			//this.buildInvalidSessionResponse();
+			//return this.buildNoPermissionsResponse("/signIn");
+		}
+	
+		modelAndView.addObject(
+			"isElevatedUser",
+			false);
+			//this.isElevatedUser(activeUserEntity.get())
 
 		try {
 			modelAndView.addObject(
