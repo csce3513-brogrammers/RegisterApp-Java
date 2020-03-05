@@ -8,7 +8,7 @@ public class ActiveEmployeeExistsQuery {
 
     public boolean query() {
 
-        if (employeerepository.existsByIsActive(false)) {
+        if (employeerepository.existsByIsActive(true)) {
 
             return false;
         }
