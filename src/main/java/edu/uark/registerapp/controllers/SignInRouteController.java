@@ -26,8 +26,8 @@ public class SignInRouteController extends BaseRouteController {
 		
 		final ModelAndView modelAndView = new ModelAndView(ViewNames.SIGN_IN.getRoute());
 
-		final ActiveEmployeeExistsQuery activeEmp = new ActiveEmployeeExistsQuery();
-		final boolean active = activeEmp.query();
+		ActiveEmployeeExistsQuery activeEmp = new ActiveEmployeeExistsQuery();
+		boolean active = activeEmp.query();
 
 		if (active) {
 
