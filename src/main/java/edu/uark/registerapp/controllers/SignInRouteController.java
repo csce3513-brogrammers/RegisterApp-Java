@@ -47,11 +47,20 @@ public class SignInRouteController extends BaseRouteController {
 		// TODO: Use the credentials provided in the request body
 		//  and the "id" property of the (HttpServletRequest)request.getSession() variable
 		//  to sign in the user
-		
+		EmployeeSignInCommand empSignIn = new EmployeeSignInCommand(employee, request.getRequestedSessionId());
+		if (!empSignIn.validate()) {
+			ModelAndView signInError = new ModelAndView(ViewNames.SIGN_IN.getViewName());
+			return signInError.addObject("errorMessage", true);
+		}
+
+		else {
+			empSignIn.createActiveUser();
+		}
 		return new ModelAndView(
 			REDIRECT_PREPEND.concat(
 				ViewNames.MAIN_MENU.getRoute()));
 	}
+
 
 	
 }
