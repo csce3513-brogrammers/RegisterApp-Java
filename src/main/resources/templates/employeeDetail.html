@@ -42,29 +42,44 @@
 							<input id="employeeEmployeeId" type="text" th:value="${!employee.isEmpty} ? ${employee.employeeId} : ''" class="update" disabled />
 						</td>
 					</tr>
+
 					<!-- TODO: Other employee inputs -->
+
 					<tr th:class="${employee.isEmpty} ? hidden : ''">
 						<td class="label">First Name:</td>
 						<td>
-							<input id="employeeFirstName" type="text" th:value="${!employee.isEmpty} ? ${employee.employeeFirstName} : ''" class="update"/>
+							<input id="employeeFirstName" type="text" th:value="${!employee.isEmpty} ? ${employee.firstName} : ''" class="update"/>
 						</td>
 					</tr>
 					<tr th:class="${employee.isEmpty} ? hidden : ''">
 						<td class="label">Last Name:</td>
 						<td>
-							<input id="employeeLastName" type="text" th:value="${!employee.isEmpty} ? ${employee.employeeLastName} : ''" class="update"/>
+							<input id="employeeLastName" type="text" th:value="${!employee.isEmpty} ? ${employee.lastName} : ''" class="update"/>
 						</td>
 					</tr>
 					<tr th:class="${employee.isEmpty} ? hidden : ''">
 						<td class="label">Password:</td>
 						<td>
-							<input id="employeePassword" type="text" th:value="${!employee.isEmpty} ? ${employee.employeePassword} : ''" class="update"/>
+							<input id="employeePassword" type="text" th:value="${!employee.isEmpty} ? ${employee.password} : ''" class="update"/>
 						</td>
 					</tr>
 					<tr th:class="${employee.isEmpty} ? hidden : ''">
 						<td class="label">Confirm Password:</td>
 						<td>
-							<input id="employeeConfirmPassword" type="text" th:value="${!employee.isEmpty} ? ${employee.employeeConfirmPassword} : ''" class="update"/>
+							<input id="employeeConfirmPassword" type="text" th:value="" class="update"/>
+						</td>
+					</tr>
+					<tr th:class="${employee.isEmpty} ? hidden : ''">
+						<td class="label">Employee Type</td>
+						<td>
+							<select id="employeeType" class="select">
+								<option th:each="employeeType : ${employeeTypes}" th:value="${employeeType.classification}" th:text="${employee.classification == employeeType.classification}"></option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button type="button" id="saveEmployeeDetail">Save</button>
 						</td>
 					</tr>
 				</tbody>
