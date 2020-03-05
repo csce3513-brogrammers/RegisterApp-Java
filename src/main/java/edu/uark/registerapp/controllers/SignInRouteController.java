@@ -22,12 +22,12 @@ import edu.uark.registerapp.models.api.EmployeeSignIn;
 public class SignInRouteController extends BaseRouteController {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView start(@RequestParam final Map<String, String> signIn) {
+	public ModelAndView start(@RequestParam Map<String, String> signIn) {
 		
-		final ModelAndView modelAndView = new ModelAndView(REDIRECT_PREPEND.concat(ViewNames.SIGN_IN.getRoute()));
+		ModelAndView modelAndView = new ModelAndView(ViewNames.SIGN_IN.getRoute());
 
-		final ActiveEmployeeExistsQuery activeEmp = new ActiveEmployeeExistsQuery();
-		final boolean active = activeEmp.query();
+		ActiveEmployeeExistsQuery activeEmp = new ActiveEmployeeExistsQuery();
+		boolean active = activeEmp.query();
 
 		if (!active) {
 
