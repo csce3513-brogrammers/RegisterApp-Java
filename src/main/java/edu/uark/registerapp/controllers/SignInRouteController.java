@@ -55,10 +55,11 @@ public class SignInRouteController extends BaseRouteController {
 
 		else {
 			empSignIn.createActiveUser();
-		}
+		
 		return new ModelAndView(
 			REDIRECT_PREPEND.concat(
 				ViewNames.MAIN_MENU.getRoute()));
+		}
 	}
 
 
