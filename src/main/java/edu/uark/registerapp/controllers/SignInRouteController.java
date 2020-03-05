@@ -36,7 +36,7 @@ public class SignInRouteController extends BaseRouteController {
 
 		else {
 
-			return new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getRoute());
+			return new ModelAndView(REDIRECT_PREPEND.concat(ViewNames.EMPLOYEE_DETAIL.getRoute()));
 		}
 
 	}
