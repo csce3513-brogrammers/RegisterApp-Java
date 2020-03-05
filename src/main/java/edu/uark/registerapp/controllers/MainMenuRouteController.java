@@ -40,7 +40,7 @@ public class MainMenuRouteController extends BaseRouteController {
 
 			modelAndView.addObject(
 				"isElevatedUser",
-				true);
+				this.isElevatedUser(activeUserEntity.get()));
 				//this.isElevatedUser(activeUserEntity.get())
 		
 		return modelAndView;
