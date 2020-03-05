@@ -11,11 +11,11 @@ public class ActiveEmployeeExistsQuery {
         if (employeerepository.existsByIsActive(true)) {
             
             //Sign-In
-            return false;
+            return true;
         }
 
         //Employee-Detail
-        return true;
+        return false;
     }
 
     @Autowired
