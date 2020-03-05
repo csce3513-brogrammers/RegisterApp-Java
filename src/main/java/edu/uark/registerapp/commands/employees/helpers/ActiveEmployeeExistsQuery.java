@@ -10,6 +10,8 @@ import edu.uark.registerapp.models.repositories.EmployeeRepository;
 @Service
 public class ActiveEmployeeExistsQuery implements VoidCommandInterface {
 
+    void execute() {}
+
     public boolean query() {
 
         if (employeerepository.existsByIsActive(true)) {
