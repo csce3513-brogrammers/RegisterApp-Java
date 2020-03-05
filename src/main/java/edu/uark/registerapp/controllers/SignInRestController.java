@@ -18,7 +18,7 @@ public class SignInRestController extends BaseRestController {
 	public @ResponseBody ApiResponse removeActiveUser(
 		final HttpServletRequest request
 	) {
-		final ActiveUserDeleteCommand userDelete = new ActiveUserDeleteCommand(request.getSession().getId());
+		final ActiveUserDeleteCommand userDelete = new ActiveUserDeleteCommand(request.getRequestedSessionId());
 		userDelete.deleteActive();
 
 		return (new ApiResponse())
