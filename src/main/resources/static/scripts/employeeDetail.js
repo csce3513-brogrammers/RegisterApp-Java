@@ -2,11 +2,32 @@ let hideEmployeeSavedAlertTimer = undefined;
 
 document.addEventListener("DOMContentLoaded", () => {
 	// TODO: Things that need doing when the view is loaded
+
+	document.getElementById("saveEmployeeDetail").addEventListener("click", saveActionClick())
 });
 
 // Save
 function saveActionClick(event) {
 	// TODO: Actually save the employee via an AJAX call
+	// Validate input
+		// Display appropriate error,focus element, stop saving
+	if(document.getElementById("employeeFirstName").value == "") {
+
+		document.getElementById("employeeFirstName").focus();
+	}
+	if(document.getElementById("employeeLastName").value == "") {
+
+		document.getElementById("employeeLastName").focus();
+	}
+	if(document.getElementById("employeePassword").value == "" || 
+	   document.getElementById("employeePassword").value != document.getElementById("employeeConfirmPassword").value) {
+
+		document.getElementById("employeePassword").focus();
+	}
+	if(document.getElementById("employeeClassification").value != (101 || 501 || 701)) {
+
+		document.getElementById("employeeClassification").focus();
+	}
 	displayEmployeeSavedAlertModal();
 }
 
