@@ -18,6 +18,5 @@ public class ActiveEmployeeExistsQuery {
         return false;
     }
 
-    @Autowired
-    private EmployeeRepository employeerepository;
+    @Autowired private EmployeeRepository employeerepository;
 }
