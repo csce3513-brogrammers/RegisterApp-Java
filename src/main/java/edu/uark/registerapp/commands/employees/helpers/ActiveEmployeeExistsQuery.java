@@ -6,12 +6,14 @@ import edu.uark.registerapp.models.repositories.EmployeeRepository;
 
 public class ActiveEmployeeExistsQuery {
 
-    public void query() {
+    public boolean query() {
 
         if (employeerepository.existsByIsActive(false)) {
 
-            throw new NotFoundException("Employee");
+            return false;
         }
+
+        return true;
     }
 
     @Autowired
