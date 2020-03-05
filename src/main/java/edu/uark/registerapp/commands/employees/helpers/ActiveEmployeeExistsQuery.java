@@ -9,10 +9,12 @@ public class ActiveEmployeeExistsQuery {
     public boolean query() {
 
         if (employeerepository.existsByIsActive(true)) {
-
-            throw new NotFoundException("Employee");
+            
+            //Sign-In
+            return false;
         }
 
+        //Employee-Detail
         return true;
     }
 

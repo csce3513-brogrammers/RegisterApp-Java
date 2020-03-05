@@ -31,12 +31,12 @@ public class SignInRouteController extends BaseRouteController {
 
 		if (active) {
 
-			return modelAndView;
+			return new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getRoute());
 		}
 
 		else {
 
-			return new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getRoute());
+			return modelAndView;
 		}
 
 	}
