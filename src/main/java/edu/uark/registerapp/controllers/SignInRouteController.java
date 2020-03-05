@@ -27,7 +27,7 @@ public class SignInRouteController extends BaseRouteController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView start(@RequestParam Map<String, String> signIn) {
 		
-		ModelAndView modelAndView = new ModelAndView(ViewNames.SIGN_IN.getViewName());
+		ModelAndView modelAndView = new ModelAndView(ViewNames.SIGN_IN.getRoute());
 
 		ActiveEmployeeExistsQuery activeEmp = new ActiveEmployeeExistsQuery();
 		boolean active = activeEmp.query();
