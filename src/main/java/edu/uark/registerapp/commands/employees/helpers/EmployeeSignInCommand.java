@@ -23,7 +23,7 @@ public class EmployeeSignInCommand {
         this.sessionID = session;
     }
 
-    public void validate() {
+    public boolean validate() {
 
         String ID = this.employeeInfo.getEmployeeId();
         String pass = this.employeeInfo.getPassword();
@@ -45,15 +45,17 @@ public class EmployeeSignInCommand {
 
                 else {
 
-                    //Password Incorrect
+                    return false;
                 }
             }
 
             else {
 
-                //employee doesnt exist
+                return false;
             }
         }
+
+        return true;
     }
 
     @Transactional
