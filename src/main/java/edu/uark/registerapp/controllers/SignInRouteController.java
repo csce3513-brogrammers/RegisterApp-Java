@@ -29,16 +29,16 @@ public class SignInRouteController extends BaseRouteController {
 		ActiveEmployeeExistsQuery activeEmp = new ActiveEmployeeExistsQuery();
 		boolean active = activeEmp.query();
 
-		if (!active) {
+		if (active) {
 
-			return new ModelAndView(
-				REDIRECT_PREPEND.concat(
-					ViewNames.EMPLOYEE_DETAIL.getRoute()));
+			return modelAndView;
 		}
 
 		else {
 
-			return modelAndView;
+			return new ModelAndView(
+				REDIRECT_PREPEND.concat(
+					ViewNames.EMPLOYEE_DETAIL.getRoute()));
 		}
 
 	}
