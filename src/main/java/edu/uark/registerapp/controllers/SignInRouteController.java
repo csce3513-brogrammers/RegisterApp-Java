@@ -31,18 +31,12 @@ public class SignInRouteController extends BaseRouteController {
 
 		if (active) {
 
-<<<<<<< HEAD
 			return modelAndView;
-=======
-			return new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getRoute());
->>>>>>> 857e5328af97bfc402a8f9f2d8cd0fb984b41519
 		}
 
 		else {
 
-			return new ModelAndView(
-				REDIRECT_PREPEND.concat(
-					ViewNames.EMPLOYEE_DETAIL.getRoute()));
+			return new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getRoute());
 		}
 
 	}
