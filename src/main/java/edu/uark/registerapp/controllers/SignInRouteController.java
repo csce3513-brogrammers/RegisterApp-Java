@@ -23,10 +23,12 @@ import edu.uark.registerapp.models.entities.ActiveUserEntity;
 @Controller
 @RequestMapping(value = "/")
 public class SignInRouteController extends BaseRouteController {
+
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView start(@RequestParam Map<String, String> signIn) {
 		
 		ModelAndView modelAndView = new ModelAndView(ViewNames.SIGN_IN.getRoute());
+
 		ActiveEmployeeExistsQuery activeEmp = new ActiveEmployeeExistsQuery();
 		boolean active = activeEmp.query();
 

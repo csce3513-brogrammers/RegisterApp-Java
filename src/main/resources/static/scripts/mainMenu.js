@@ -15,7 +15,7 @@ function prodActionClick(event){
 }
 
 function createActionClick(event){
-    window.location.assign("employeeDetail");
+    displayError("Functionality has not been implemented yet");
 }
 
 function detailActionClick(event){
