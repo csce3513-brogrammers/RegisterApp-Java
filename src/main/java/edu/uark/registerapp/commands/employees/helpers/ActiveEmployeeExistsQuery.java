@@ -10,7 +10,7 @@ public class ActiveEmployeeExistsQuery {
 
         if (employeerepository.existsByIsActive(true)) {
 
-            return false;
+            throw new NotFoundException("Employee");
         }
 
         return true;
