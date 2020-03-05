@@ -1,7 +1,6 @@
 package edu.uark.registerapp.controllers;
 
 import java.util.Map;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,29 +13,27 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.uark.registerapp.commands.employees.helpers.ActiveEmployeeExistsQuery;
 import edu.uark.registerapp.commands.employees.helpers.EmployeeSignInCommand;
-import edu.uark.registerapp.commands.exceptions.NotFoundException;
 import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.models.api.EmployeeSignIn;
-import edu.uark.registerapp.models.entities.ActiveUserEntity;
 
 @Controller
 @RequestMapping(value = "/")
 public class SignInRouteController extends BaseRouteController {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView start(@RequestParam Map<String, String> signIn) {
+	public ModelAndView start(@RequestParam final Map<String, String> signIn) {
 		
-		ModelAndView modelAndView = new ModelAndView(ViewNames.SIGN_IN.getRoute());
+		final ModelAndView modelAndView = new ModelAndView(REDIRECT_PREPEND.concat(ViewNames.SIGN_IN.getRoute()));
 
-		ActiveEmployeeExistsQuery activeEmp = new ActiveEmployeeExistsQuery();
-		boolean active = activeEmp.query();
+		final ActiveEmployeeExistsQuery activeEmp = new ActiveEmployeeExistsQuery();
+		final boolean active = activeEmp.query();
 
 		if (!active) {
 
 			return new ModelAndView(
-			REDIRECT_PREPEND.concat(
-				ViewNames.MAIN_MENU.getRoute()));
+				REDIRECT_PREPEND.concat(
+					ViewNames.EMPLOYEE_DETAIL.getRoute()));
 		}
 
 		else {
@@ -47,23 +44,23 @@ public class SignInRouteController extends BaseRouteController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public ModelAndView performSignIn(EmployeeSignIn employee, HttpServletRequest request ) {
+	public ModelAndView performSignIn(final EmployeeSignIn employee, final HttpServletRequest request ) {
 
-		// TODO: Use the credentials provided in the request body
-		//  and the "id" property of the (HttpServletRequest)request.getSession() variable
-		//  to sign in the user
-		EmployeeSignInCommand empSignIn = new EmployeeSignInCommand(employee, request.getRequestedSessionId());
+		final EmployeeSignInCommand empSignIn = new EmployeeSignInCommand(employee, request.getRequestedSessionId());
+
 		if (!empSignIn.validate()) {
-			ModelAndView signInError = new ModelAndView(ViewNames.SIGN_IN.getViewName());
+
+			final ModelAndView signInError = new ModelAndView(ViewNames.SIGN_IN.getViewName());
 			return signInError.addObject("errorMessage", true);
 		}
 
 		else {
+
 			empSignIn.createActiveUser();
 		
-		return new ModelAndView(
-			REDIRECT_PREPEND.concat(
-				ViewNames.MAIN_MENU.getRoute()));
+			return new ModelAndView(
+				REDIRECT_PREPEND.concat(
+					ViewNames.MAIN_MENU.getRoute()));
 		}
 	}
 
