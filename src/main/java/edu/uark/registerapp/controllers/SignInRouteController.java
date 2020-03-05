@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.uark.registerapp.commands.employees.helpers.ActiveEmployeeExistsQuery;
 import edu.uark.registerapp.commands.employees.helpers.EmployeeSignInCommand;
+import edu.uark.registerapp.commands.exceptions.NotFoundException;
 import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.models.api.EmployeeSignIn;
@@ -23,22 +25,25 @@ import edu.uark.registerapp.models.entities.ActiveUserEntity;
 public class SignInRouteController extends BaseRouteController {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView start(@RequestParam Map<String, String> signIn,  HttpServletRequest request) {
+	public ModelAndView start(@RequestParam Map<String, String> signIn) {
+		
 		ModelAndView modelAndView = new ModelAndView(ViewNames.SIGN_IN.getViewName());
 
-		final Optional<ActiveUserEntity> activeUserEntity =
-			this.getCurrentUser(request);
-		if (!activeUserEntity.isPresent()) {
-			this.buildInvalidSessionResponse();
-			return this.buildNoPermissionsResponse("/employeeDetail");
-		}
-	
-		modelAndView.addObject(
-			"isElevatedUser",
-			false);
-			this.isElevatedUser(activeUserEntity.get());
+		ActiveEmployeeExistsQuery activeEmp = new ActiveEmployeeExistsQuery();
+		boolean active = activeEmp.query();
 
-		return modelAndView;
+		if (!active) {
+
+			return new ModelAndView(
+			REDIRECT_PREPEND.concat(
+				ViewNames.MAIN_MENU.getRoute()));
+		}
+
+		else {
+
+			return modelAndView;
+		}
+
 	}
 
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
