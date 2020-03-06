@@ -1,3 +1,5 @@
+package edu.uark.registerapp.models.enums;
+
 public class EmployeeType {
     private int classification;
     //Getters and Setters
