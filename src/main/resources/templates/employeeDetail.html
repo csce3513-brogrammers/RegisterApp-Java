@@ -73,13 +73,10 @@
 						<td class="label">Employee Type</td>
 						<td>
 							<select id="employeeType" class="select">
-								<option th:each="employeeType : ${employeeTypes}" th:value="${employeeType.classification}" th:text="${employee.classification == employeeType.classification}"></option>
+								<option id="Cashier">Cashier</option>
+								<option id="ShiftManager">Shift Manager</option>
+								<option id="GeneralManager">General Manager</option>
 							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<button type="button" id="saveEmployeeDetail">Save</button>
 						</td>
 					</tr>
 				</tbody>
