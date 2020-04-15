@@ -27,9 +27,9 @@
 			<h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
 		</div>
 
-		<form action="/" method="POST" onsubmit="return validateForm();" class="inputContent" id="signInForm">		
-			Employee ID: <input type='text' name='employee' value='Employee ID'></br>
-            Password: <input type='text' name='password' value='Password'></br>
+		<form action="/" method="POST" onsubmit="return validateForm();" class="inputContent" id="signInForm"></form>		
+			Employee ID: <input type='text' name='employee' th:value='Employee ID'></br>
+            Password: <input type='text' name='password' th:value='Password'></br>
             <input type='submit' value='Sign In'></br>			
 		</form>
 	</div>
